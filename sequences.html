@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Perfect Numbers!</title>
+        <script>
+            var multiplier
+            var add
+            function updateNthTerm(){
+                multiplier=document.getElementById("multiplier").value
+                add=document.getElementById("add").value
+                if(add==""||add==0){
+                    display=multiplier+"n"
+                } else {
+                    if(add>0){
+                        display=multiplier+"n+"+add
+                    } else {
+                        display=multiplier+"n"+add
+                    }
+                }
+                if(multiplier=="") {
+                    document.getElementById("nthTermRule").innerHTML="Please give a multiplier!"
+                    document.getElementById("nthTermRule").style.color="red"
+                } else {
+                    document.getElementById("nthTermRule").innerHTML=display
+                    document.getElementById("nthTermRule").style.color="lime"
+                }
+            }
+
+            function first10terms() {
+                var sequence = []
+                multiplier=document.getElementById("multiplier").value
+                add = document.getElementById("add").value
+                add--
+                add++
+                for(var i=1;i<11;i++){
+                    sequence.push((i*multiplier)+add)
+                }
+                if(multiplier=="") {
+                    document.getElementById("first10Display").innerHTML="Please give a multiplier!"
+                    document.getElementById("first10Display").style.color="red"
+                } else {
+                    document.getElementById("first10Display").innerHTML=sequence
+                    document.getElementById("first10Display").style.color="lime"
+                }
+            }
+
+            function anyNumber() {
+                var ref=document.getElementById("anyNumber").value
+                multiplier=document.getElementById("multiplier").value
+                add=document.getElementById("add").value
+                add--
+                add++
+                if(multiplier=="") {
+                    document.getElementById("anyDisplay").innerHTML="Please give a multiplier!"
+                    document.getElementById("anyDisplay").style.color="red"
+                } else if(ref=="") {
+                    document.getElementById("anyDisplay").innerHTML="Please give a reference!"
+                    document.getElementById("anyDisplay").style.color="red"
+                } else {
+                    document.getElementById("anyDisplay").innerHTML=(ref*multiplier)+add
+                    document.getElementById("anyDisplay").style.color="lime"
+                }
+            }
+        </script>
+        <style>
+            body {
+                background-color: rgb(5, 63, 63);
+                font-size: 20pt;
+                text-align: center;
+            }
+
+            h1 {
+                color: cyan
+            }
+
+            p {
+                color: white
+            }
+
+            .buttons {
+                color: green
+            }
+
+            input[type="button"] {
+                transition: 1s;
+                background-color: blue;
+                color: black;
+                font-size: 20pt
+            }
+
+            input[type="button"]:hover {
+                transition: 1s;
+                background-color: blueviolet;
+                color: orange;
+                font-size: 27.5pt
+            }
+
+            input {
+                color: gold;
+                background-color: black
+            }
+
+            h1 {
+                color: cyan
+            }
+
+            .red {
+                color: red
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Nth term calculator!</h1>
+        <p>
+            Multiplier? <input type=number id="multiplier"/>
+            Add? (or minus)<input type=number id="add"/><input type="button" value="apply" onclick="updateNthTerm()"/>
+        </p>
+        <p>
+            <div id="nthTermRule" class="red">No rule given.</div>
+        </p>
+        <p>
+            Click this button for the first 10 terms in the sequence you defined.    
+            <input type=button onclick="first10terms()" value="First 10 terms"/>
+            <div id="first10Display" class="red">No rule given.</div>
+        </p>
+        <p>
+            Display any term by typing in which term you want in the box and clicking the button.
+            <input type=button onclick="anyNumber()" value=any /><br/>
+            <input type="number" id="anyNumber"/>
+            <div id="anyDisplay" class="red">No rule given.</div>
+        </p>
+    </body>
+</html>
